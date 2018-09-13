@@ -3,7 +3,7 @@ FROM nvidia/cuda:9.0-base-ubuntu16.04
 MAINTAINER Igor Rabkin <igor.rabkin@xiaoyi.com>
 
 ###########################################
-#     CUDA, CUDNN & Dependences NCCL Installation     #
+#     CUDA, CUDNN & Dependences           #
 ###########################################
 
 ENV CUDNN_VERSION 7.0.5.15
@@ -21,11 +21,10 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libcudnn7-dev=$CUDNN_VERSION-1+cuda9.0 \
     libcurl3-dev \
     libfreetype6-dev \
-    libhdf5-serial-dev \
     libpng12-dev \
     libzmq3-dev  && \
     find /usr/local/cuda-9.0/lib64/ -type f -name 'lib*_static.a' -not -name 'libcudart_static.a' -delete && \
-    rm /usr/lib/x86_64-linux-gnu/libcudnn_static_v7.a &&\
+    rm /usr/lib/x86_64-linux-gnu/libcudnn_static_v7.a && \
     rm -rf /var/lib/apt/lists/* && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
