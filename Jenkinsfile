@@ -6,7 +6,7 @@ pipeline {
 	       sh 'docker build --no-cache -f Dockerfile -t nvidia/cuda:9.0-cudnn7-base .'  
             }
         }
-	      stage('Testing Docker Image') { 
+	stage('Testing Docker Image') { 
             steps {
                 sh '''#!/bin/bash -xe
 		    echo 'Hello, YI-TFLOW!!'
@@ -20,7 +20,7 @@ pipeline {
                    ''' 
             }
         }
-	      stage('Save & Load Docker Image') { 
+	stage('Save & Load Docker Image') { 
             steps {
                 sh '''#!/bin/bash -xe
 		     echo 'Saving Docker image into tar archive'
