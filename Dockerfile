@@ -24,7 +24,6 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libhdf5-serial-dev \
     libpng12-dev \
     libzmq3-dev  && \
-    rm -rf /var/lib/apt/lists/* && \
     find /usr/local/cuda-9.0/lib64/ -type f -name 'lib*_static.a' -not -name 'libcudart_static.a' -delete && \
     rm /usr/lib/x86_64-linux-gnu/libcudnn_static_v7.a 
     
@@ -36,6 +35,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 RUN apt-get install -y --no-install-recommends \
     libnccl2=2.2.13-1+cuda9.0 \
     libnccl-dev=2.2.13-1+cuda9.0 && \
+    rm -rf /var/lib/apt/lists/* && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
