@@ -3,7 +3,7 @@ FROM nvidia/cuda:9.0-base-ubuntu16.04
 MAINTAINER Igor Rabkin <igor.rabkin@xiaoyi.com>
 
 ###########################################
-#     CUDA, CUDNN & Dependences NCCL Installation     #
+#     CUDA, CUDNN & Dependences           #
 ###########################################
 
 ENV CUDNN_VERSION 7.0.5.15
