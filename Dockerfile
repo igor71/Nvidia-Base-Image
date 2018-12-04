@@ -6,7 +6,7 @@ MAINTAINER Igor Rabkin <igor.rabkin@xiaoyi.com>
 #     CUDA, CUDNN & Dependences           #
 ###########################################
 
-ENV CUDNN_VERSION 7.0.5.15
+ENV CUDNN_VERSION 7.4.1.5
 LABEL com.nvidia.cudnn.version="${CUDNN_VERSION}"
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
@@ -23,7 +23,9 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libfreetype6-dev \
     libhdf5-serial-dev \
     libpng12-dev \
-    libzmq3-dev  && \
+    libzmq3-dev \
+	zlib1g-dev \
+	pkg-config && \
     find /usr/local/cuda-9.0/lib64/ -type f -name 'lib*_static.a' -not -name 'libcudart_static.a' -delete && \
     rm /usr/lib/x86_64-linux-gnu/libcudnn_static_v7.a 
     
@@ -39,6 +41,7 @@ RUN apt-get install -y --no-install-recommends \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
+
 ###################################################################
 # Link NCCL libray and header where the build script expects them #
 ###################################################################
@@ -47,6 +50,3 @@ RUN mkdir /usr/local/cuda-9.0/lib &&  \
     ln -s /usr/lib/x86_64-linux-gnu/libnccl.so.2 /usr/local/cuda/lib/libnccl.so.2 && \
     ln -s /usr/include/nccl.h /usr/local/cuda/include/nccl.h
     
-# TODO: Remove after license is excluded from BUILD file.
-RUN gunzip /usr/share/doc/libnccl2/NCCL-SLA.txt.gz && \
-    cp /usr/share/doc/libnccl2/NCCL-SLA.txt /usr/local/cuda/
