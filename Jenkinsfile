@@ -24,7 +24,7 @@ pipeline {
             steps {
                 sh '''#!/bin/bash -xe
 		     echo 'Saving Docker image into tar archive'
-                     docker save nvidia/cuda:9.0-cudnn7-base | pv -f | cat > $WORKSPACE/nvidia-cuda-9.0-cudnn7-base.tar
+                     docker save nvidia/cuda:10.1-cudnn7-base | pv -f | cat > $WORKSPACE/nvidia-cuda-10.1-cudnn7-base.tar
 		     echo 'Remove Original Docker Image' 
 	             CURRENT_ID=$(docker images | grep -E '^nvidia/cuda.*10.1-cudnn7-base' | awk -e '{print $3}')
 	             docker rmi -f $CURRENT_ID
