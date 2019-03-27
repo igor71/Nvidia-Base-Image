@@ -1,6 +1,6 @@
 FROM ubuntu:18.04
 
-LABEL maintainer "NVIDIA CORPORATION <cudatools@nvidia.com>"
+MAINTAINER "NVIDIA CORPORATION <cudatools@nvidia.com>"
 
 ###########################################
 #           Install Basic Staff           #
