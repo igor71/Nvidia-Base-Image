@@ -2,6 +2,7 @@ FROM ubuntu:18.04
 
 MAINTAINER Igor Rabkin <igor.rabkin@xiaoyi.com>
 
+
 ###########################################
 #           Install Basic Staff           #
 ###########################################
@@ -77,3 +78,6 @@ RUN [[ "${ARCH}" = "ppc64le" ]] || { apt-get update && \
         && apt-get clean \
         && rm -rf /var/lib/apt/lists/*; }
 # ENV TF_NEED_TENSORRT 1
+
+LABEL com.nvidia.cuda.version="${CUDA_VERSION}"
+LABEL com.nvidia.cudnn.version="${CUDNN_VERSION}"
