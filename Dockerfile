@@ -44,13 +44,13 @@ ARG LIB_DIR_PREFIX=x86_64
 ARG ARCH=
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
-    cuda-command-line-tools-${CUDA} \
-    cuda-cublas-dev-${CUDA} \
-    cuda-cudart-dev-${CUDA} \
-    cuda-cufft-dev-${CUDA} \
-    cuda-curand-dev-${CUDA} \
-    cuda-cusolver-dev-${CUDA} \
-    cuda-cusparse-dev-${CUDA} \
+    cuda-command-line-tools-${CUDA/./-} \
+    cuda-cublas-dev-${CUDA/./-} \
+    cuda-cudart-dev-${CUDA/./-} \
+    cuda-cufft-dev-${CUDA/./-} \
+    cuda-curand-dev-${CUDA/./-} \
+    cuda-cusolver-dev-${CUDA/./-} \
+    cuda-cusparse-dev-${CUDA/./-} \
     libcudnn7=$CUDNN_VERSION-1+cuda${CUDA} \
     libcudnn7-dev=$CUDNN_VERSION-1+cuda${CUDA} \
     libcurl3-dev \
