@@ -10,5 +10,4 @@ CUDA Version   -->> 10.1.105
 
 CUDNN Version  -->> 7.5.0.56
 
-NCCL Version   -->> 2.4.2
 ```
