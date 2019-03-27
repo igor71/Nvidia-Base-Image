@@ -65,19 +65,5 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     find /usr/local/cuda-${CUDA}/lib64/ -type f -name 'lib*_static.a' -not -name 'libcudart_static.a' -delete && \
     rm /usr/lib/${LIB_DIR_PREFIX}-linux-gnu/libcudnn_static_v7.a 
     
-##################################################################
-#                     Possible TensorRT Support                  #
-##################################################################
-
-RUN [[ "${ARCH}" = "ppc64le" ]] || { apt-get update && \
-        apt-get install nvinfer-runtime-trt-repo-ubuntu1804-5.0.2-ga-cuda${CUDA} \
-        && apt-get update \
-        && apt-get install -y --no-install-recommends \
-            libnvinfer5=5.0.2-1+cuda${CUDA} \
-            libnvinfer-dev=5.0.2-1+cuda${CUDA} \
-        && apt-get clean \
-        && rm -rf /var/lib/apt/lists/*; }
-# ENV TF_NEED_TENSORRT 1
-
 LABEL com.nvidia.cuda.version="${CUDA_VERSION}"
 LABEL com.nvidia.cudnn.version="${CUDNN_VERSION}"
