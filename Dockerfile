@@ -43,6 +43,7 @@ ARG CUDA=10.1
 ARG LIB_DIR_PREFIX=x86_64
 ARG ARCH=
 
+SHELL ["/bin/bash", "-c"]
 RUN apt-get update && apt-get install -y --no-install-recommends \
     cuda-command-line-tools-${CUDA/./-} \
     cuda-cublas-dev-${CUDA/./-} \
