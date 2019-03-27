@@ -39,20 +39,20 @@ ENV NVIDIA_REQUIRE_CUDA "cuda>=10.1"
 ###########################################
 
 ENV CUDNN_VERSION 7.5.0.56
-ARG CUDA=10.1
+ARG CUDA_VERSION=10.1
 ARG LIB_DIR_PREFIX=x86_64
 ARG ARCH=
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
-    cuda-command-line-tools-${CUDA/./-} \
-    cuda-cublas-dev-${CUDA/./-} \
-    cuda-cudart-dev-${CUDA/./-} \
-    cuda-cufft-dev-${CUDA/./-} \
-    cuda-curand-dev-${CUDA/./-} \
-    cuda-cusolver-dev-${CUDA/./-} \
-    cuda-cusparse-dev-${CUDA/./-} \
-    libcudnn7=$CUDNN_VERSION-1+cuda${CUDA} \
-    libcudnn7-dev=$CUDNN_VERSION-1+cuda${CUDA} \
+    cuda-command-line-tools-${CUDA_VERSION} \
+    cuda-cublas-dev-${CUDA_VERSION} \
+    cuda-cudart-dev-${CUDA_VERSION} \
+    cuda-cufft-dev-${CUDA_VERSION} \
+    cuda-curand-dev-${CUDA_VERSION} \
+    cuda-cusolver-dev-${CUDA_VERSION} \
+    cuda-cusparse-dev-${CUDA_VERSION} \
+    libcudnn7=$CUDNN_VERSION-1+cuda${CUDA_VERSION} \
+    libcudnn7-dev=$CUDNN_VERSION-1+cuda${CUDA_VERSION} \
     libcurl3-dev \
     libfreetype6-dev \
     libhdf5-serial-dev \
@@ -67,7 +67,7 @@ RUN [[ "${ARCH}" = "ppc64le" ]] || { apt-get update && \
         apt-get install nvinfer-runtime-trt-repo-ubuntu1604-5.0.2-ga-cuda${CUDA} \
         && apt-get update \
         && apt-get install -y --no-install-recommends \
-            libnvinfer5=5.0.2-1+cuda${CUDA} \
-            libnvinfer-dev=5.0.2-1+cuda${CUDA} \
+            libnvinfer5=5.0.2-1+cuda${CUDA_VERSION} \
+            libnvinfer-dev=5.0.2-1+cuda${CUDA_VERSION} \
         && apt-get clean \
         && rm -rf /var/lib/apt/lists/*; }
