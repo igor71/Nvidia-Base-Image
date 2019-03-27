@@ -1,6 +1,6 @@
 FROM ubuntu:18.04
 
-MAINTAINER "NVIDIA CORPORATION <cudatools@nvidia.com>"
+MAINTAINER Igor Rabkin <igor.rabkin@xiaoyi.com>
 
 ###########################################
 #           Install Basic Staff           #
