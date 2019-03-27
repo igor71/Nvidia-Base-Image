@@ -76,4 +76,4 @@ RUN [[ "${ARCH}" = "ppc64le" ]] || { apt-get update && \
             libnvinfer-dev=5.0.2-1+cuda${CUDA} \
         && apt-get clean \
         && rm -rf /var/lib/apt/lists/*; }
- # ENV TF_NEED_TENSORRT 1
+# ENV TF_NEED_TENSORRT 1
