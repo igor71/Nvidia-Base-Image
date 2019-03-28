@@ -73,9 +73,11 @@ LABEL com.nvidia.cudnn.version="${CUDNN_VERSION}"
 #                          NCCL Installation                      #
 ###################################################################
 
-RUN apt-get install -y --no-install-recommends \
-    libnccl2=2.2.13-1+cuda${CUDA} \
-    libnccl-dev=2.2.13-1+cuda${CUDA} && \
+SHELL ["/bin/bash", "-c"]
+RUN cd /tmp && \
+    curl -OSL ftp://jenkins-cloud/pub/NCCL/Server-10/libnccl2_2.4.2-1+cuda10.0_amd64.deb -o libnccl2_2.4.2-1+cuda10.0_amd64.deb && \
+    curl -OSL ftp://jenkins-cloud/pub/NCCL/Server-10/libnccl-dev_2.4.2-1+cuda10.0_amd64.deb -o libnccl-dev_2.4.2-1+cuda10.0_amd64.deb && \
+    dpkg -i /temp/*.deb && \
     rm -rf /var/lib/apt/lists/* && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
