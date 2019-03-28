@@ -76,7 +76,8 @@ SHELL ["/bin/bash", "-c"]
 RUN cd /tmp && \
     curl -OSL ftp://jenkins-cloud/pub/NCCL/Server-10/libnccl2_2.4.2-1+cuda10.0_amd64.deb -o libnccl2_2.4.2-1+cuda10.0_amd64.deb && \
     curl -OSL ftp://jenkins-cloud/pub/NCCL/Server-10/libnccl-dev_2.4.2-1+cuda10.0_amd64.deb -o libnccl-dev_2.4.2-1+cuda10.0_amd64.deb && \
-    dpkg -i /temp/*.deb && \
+    dpkg -i /tmp/*.deb && \
+    rm /tmp/*.deb && \
     rm -rf /var/lib/apt/lists/* && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
