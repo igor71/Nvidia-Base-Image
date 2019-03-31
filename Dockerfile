@@ -79,11 +79,3 @@ RUN apt-get install -y --no-install-recommends \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
-
-###################################################################
-# Link NCCL libray and header where the build script expects them #
-###################################################################
-
-RUN mkdir /usr/local/cuda-10.0/lib &&  \
-    ln -s /usr/lib/x86_64-linux-gnu/libnccl.so.2 /usr/local/cuda/lib/libnccl.so.2 && \
-    ln -s /usr/include/nccl.h /usr/local/cuda/include/nccl.h
