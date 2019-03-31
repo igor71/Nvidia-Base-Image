@@ -8,7 +8,7 @@ Ubuntu Server 16.04
 
 CUDA Version   -->> 10.1.105
 
-CUDNN Version  -->> 7.5.0.56
+CUDNN Version  -->> 7.4.1.5
 
 ```
 
