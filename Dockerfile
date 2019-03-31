@@ -43,29 +43,26 @@ ENV NVIDIA_REQUIRE_CUDA "cuda>=10.0"
 ###########################################
 
 ENV CUDNN_VERSION 7.5.0.56
-ARG CUDA=10.0
-ARG LIB_DIR_PREFIX=x86_64
-ARG ARCH=
 
 SHELL ["/bin/bash", "-c"]
 RUN apt-get update && apt-get install -y --no-install-recommends \
     cuda-command-line-tools-${CUDA/./-} \
-    cuda-cublas-dev-${CUDA/./-} \
-    cuda-cudart-dev-${CUDA/./-} \
-    cuda-cufft-dev-${CUDA/./-} \
-    cuda-curand-dev-${CUDA/./-} \
-    cuda-cusolver-dev-${CUDA/./-} \
-    cuda-cusparse-dev-${CUDA/./-} \
-    libcudnn7=$CUDNN_VERSION-1+cuda${CUDA} \
-    libcudnn7-dev=$CUDNN_VERSION-1+cuda${CUDA} \
+    cuda-cublas-dev-10-0 \
+    cuda-cudart-dev-10-0 \
+    cuda-cufft-dev-10-0 \
+    cuda-curand-dev-10-0 \
+    cuda-cusolver-dev-10-0 \
+    cuda-cusparse-dev-10-0 \
+    libcudnn7=$CUDNN_VERSION-1+cuda10.0 \
+    libcudnn7-dev=$CUDNN_VERSION-1+cuda10.0 \
     libcurl3-dev \
     libfreetype6-dev \
     libhdf5-serial-dev \
     libzmq3-dev \
     zlib1g-dev \
     pkg-config && \
-    find /usr/local/cuda-${CUDA}/lib64/ -type f -name 'lib*_static.a' -not -name 'libcudart_static.a' -delete && \
-    rm /usr/lib/${LIB_DIR_PREFIX}-linux-gnu/libcudnn_static_v7.a 
+    find /usr/local/cuda-10.0/lib64/ -type f -name 'lib*_static.a' -not -name 'libcudart_static.a' -delete && \
+    rm /usr/lib/x86_64-linux-gnu/libcudnn_static_v7.a 
     
 LABEL com.nvidia.cuda.version="${CUDA_VERSION}"
 LABEL com.nvidia.cudnn.version="${CUDNN_VERSION}"
@@ -76,8 +73,8 @@ LABEL com.nvidia.cudnn.version="${CUDNN_VERSION}"
 ###################################################################
 
 RUN apt-get install -y --no-install-recommends \
-    libnccl2=2.4.2-1+cuda${CUDA} \
-    libnccl-dev=2.4.2-1+cuda${CUDA} && \
+    libnccl2=2.4.2-1+cuda10.0 \
+    libnccl-dev=2.4.2-1+cuda10.0 && \
     rm -rf /var/lib/apt/lists/* && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
@@ -87,6 +84,6 @@ RUN apt-get install -y --no-install-recommends \
 # Link NCCL libray and header where the build script expects them #
 ###################################################################
 
-RUN mkdir /usr/local/cuda-${CUDA}/lib &&  \
-    ln -s /usr/lib/${LIB_DIR_PREFIX}-linux-gnu/libnccl.so.2 /usr/local/cuda/lib/libnccl.so.2 && \
+RUN mkdir /usr/local/cuda-10.0/lib &&  \
+    ln -s /usr/lib/x86_64-linux-gnu/libnccl.so.2 /usr/local/cuda/lib/libnccl.so.2 && \
     ln -s /usr/include/nccl.h /usr/local/cuda/include/nccl.h
