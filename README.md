@@ -6,7 +6,7 @@ This image used as base image for creating images based on tensorflow version 2.
 ```
 Ubuntu Server 16.04
 
-CUDA Version   -->> 10.0.130
+CUDA Version   -->> 10.1.105
 
 CUDNN Version  -->> 7.5.0.56
 
