@@ -44,7 +44,6 @@ ENV NVIDIA_REQUIRE_CUDA "cuda>=10.0"
 
 ENV CUDNN_VERSION 7.4.1.5
 
-SHELL ["/bin/bash", "-c"]
 RUN apt-get update && apt-get install -y --no-install-recommends \
     cuda-command-line-tools-10-0 \
     cuda-cublas-dev-10-0 \
