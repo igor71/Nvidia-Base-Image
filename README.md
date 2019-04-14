@@ -15,7 +15,7 @@ CUDNN Version  -->> 7.5.0.56
 Load & Run docker image:
 
 ```
-pv /media/common/DOCKER_IMAGES/Nvidia/BasicImages/nvidia-cuda-10.0-cudnn7-base.tar | docker load
+pv /media/common/DOCKER_IMAGES/Nvidia/BasicImages/nvidia-cuda-10.0-cudnn7-base-ubuntu18.04.tar | docker load
 
 docker tag d420381f30e4 nvidia/cuda:10.0-cudnn7-base
 
