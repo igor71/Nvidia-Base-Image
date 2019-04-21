@@ -17,7 +17,7 @@ Load & Run docker image:
 ```
 pv /media/common/DOCKER_IMAGES/Nvidia/BasicImages/nvidia-cuda-10.0-cudnn7-base-ubuntu16.04.tar | docker load
 
-docker tag fa38bf614f2d nvidia/cuda:10.0-cudnn7-base
+docker tag 2a9e5a41bb75 nvidia/cuda:10.0-cudnn7-base
 
 docker run --runtime=nvidia -it --name tflow_build -v /media:/media nvidia/cuda:10.0-cudnn7-base
 ```
