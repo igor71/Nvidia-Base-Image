@@ -66,24 +66,3 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     
 LABEL com.nvidia.cuda.version="${CUDA_VERSION}"
 LABEL com.nvidia.cudnn.version="${CUDNN_VERSION}"
-
-
-###################################################################
-#                          NCCL Installation                      #
-###################################################################
-
-RUN apt-get install -y --no-install-recommends \
-    libnccl2=2.4.2-1+cuda${CUDA} \
-    libnccl-dev=2.4.2-1+cuda${CUDA} && \
-    rm -rf /var/lib/apt/lists/* && \
-    apt-get clean && \
-    rm -rf /var/lib/apt/lists/*
-
-
-###################################################################
-# Link NCCL libray and header where the build script expects them #
-###################################################################
-
-RUN mkdir /usr/local/cuda-${CUDA}/lib &&  \
-    ln -s /usr/lib/${LIB_DIR_PREFIX}-linux-gnu/libnccl.so.2 /usr/local/cuda/lib/libnccl.so.2 && \
-    ln -s /usr/include/nccl.h /usr/local/cuda/include/nccl.h
