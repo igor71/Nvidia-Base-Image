@@ -17,6 +17,8 @@ docker inspect -f '{{index .Config.Labels "com.nvidia.cudnn.version"}}' 9bc1621c
 
 NCCL Version   -->> 2.3.7
 
+docker inspect -f '{{index .Config.Labels "com.nvidia.nccl.version"}}' 9bc1621ceb53
+
 ```
 
 Load & Run docker image:
