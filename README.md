@@ -18,7 +18,7 @@ NCCL Version   -->> 2.3.7
 Load & Run docker image:
 
 ```
-pv /media/common/DOCKER_IMAGES/Nvidia/BasicImages/nvidia-cuda-9.0-cudnn7-base-horovod-ubuntu16.04.tar | docker load
+pv /media/common/DOCKER_IMAGES/Nvidia/BasicImages/nvidia-cuda-9.0-cudnn7-base-horovod.tar | docker load
 
 docker tag 2a9e5a41bb75 nvidia/cuda:9.0-cudnn7-base-horovod
 
