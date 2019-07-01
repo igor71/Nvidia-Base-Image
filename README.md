@@ -9,15 +9,15 @@ Ubuntu Server 16.04
 
 CUDA Version   -->> 9.0.176
 
-docker inspect -f '{{index .Config.Labels "com.nvidia.cuda.version"}}' 9bc1621ceb53
+docker inspect -f '{{index .Config.Labels "com.nvidia.cuda.version"}}' e3f90c878960
 
 CUDNN Version  -->> 7.6.0.64
 
-docker inspect -f '{{index .Config.Labels "com.nvidia.cudnn.version"}}' 9bc1621ceb53
+docker inspect -f '{{index .Config.Labels "com.nvidia.cudnn.version"}}' e3f90c878960
 
 NCCL Version   -->> 2.3.7
 
-docker inspect -f '{{index .Config.Labels "com.nvidia.nccl.version"}}' 9bc1621ceb53
+docker inspect -f '{{index .Config.Labels "com.nvidia.nccl.version"}}' e3f90c878960
 
 ```
 
