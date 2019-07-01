@@ -1,23 +1,26 @@
-# Nvidia-Base-Image
-Basic Nvidia Image for building tensorflow enabled docker image
+# Nvidia Base Image For Horovod Dockers
 
-This image used as base image for creating images based on tensorflow version 2.0 and above
+Basic Nvidia Image for building horovod with tensorflow docker image
+
+This image used as base image for creating images based on tensorflow version 1.13.1 and above
 
 ```
 Ubuntu Server 16.04
 
-CUDA Version   -->> 10.1.130
+CUDA Version   -->> 9.0.176
 
-CUDNN Version  -->> 7.4.1.5
+CUDNN Version  -->> 7.6.0.64
+
+NCCL Version   -->> 2.3.7
 
 ```
 
 Load & Run docker image:
 
 ```
-pv /media/common/DOCKER_IMAGES/Nvidia/BasicImages/nvidia-cuda-10.0-cudnn7-base-ubuntu16.04.tar | docker load
+pv /media/common/DOCKER_IMAGES/Nvidia/BasicImages/nvidia-cuda-9.0-cudnn7-base-horovod-ubuntu16.04.tar | docker load
 
-docker tag 2a9e5a41bb75 nvidia/cuda:10.0-cudnn7-base
+docker tag 2a9e5a41bb75 nvidia/cuda:9.0-cudnn7-base-horovod
 
-docker run --runtime=nvidia -it --name tflow_build -v /media:/media nvidia/cuda:10.0-cudnn7-base
+docker run --runtime=nvidia -it --name tflow_build -v /media:/media nvidia/cuda:9.0-cudnn7-base-horovod
 ```
