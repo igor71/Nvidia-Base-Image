@@ -22,5 +22,8 @@ pv /media/common/DOCKER_IMAGES/Nvidia/BasicImages/nvidia-cuda-9.0-cudnn7-base-ho
 
 docker tag 2a9e5a41bb75 nvidia/cuda:9.0-cudnn7-base-horovod
 
-docker run --runtime=nvidia -it --name tflow_build -v /media:/media nvidia/cuda:9.0-cudnn7-base-horovod
+nvidia-docker run --name horovod-base -v /media:/media nvidia/cuda:9.0-cudnn7-base-horovod
+
+docker run --runtime=nvidia -it --name horovod-base -v /media:/media nvidia/cuda:9.0-cudnn7-base-horovod
+
 ```
