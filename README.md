@@ -9,7 +9,11 @@ Ubuntu Server 16.04
 
 CUDA Version   -->> 9.0.176
 
+docker inspect -f '{{index .Config.Labels "com.nvidia.cuda.version"}}' 9bc1621ceb53
+
 CUDNN Version  -->> 7.6.0.64
+
+docker inspect -f '{{index .Config.Labels "com.nvidia.cudnn.version"}}' 9bc1621ceb53
 
 NCCL Version   -->> 2.3.7
 
