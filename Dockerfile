@@ -11,6 +11,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends gnupg2 curl ca-
 ENV CUDA_VERSION 10.0.130
 ENV CUDNN_VERSION 7.6.0.64
 ENV NCCL_VERSION 2.4.2
+ENV CUDA_PKG_VERSION 10-0=$CUDA_VERSION-1
 
 # For libraries in the cuda-compat-* package: https://docs.nvidia.com/cuda/eula/index.html#attachment-a
 RUN apt-get update && apt-get install -y --no-install-recommends \
