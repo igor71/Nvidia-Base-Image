@@ -13,7 +13,7 @@ ENV CUDNN_VERSION 7.6.0.64
 ENV NCCL_VERSION 2.4.2
 
 # For libraries in the cuda-compat-* package: https://docs.nvidia.com/cuda/eula/index.html#attachment-a
-RUN apt-get install -y --no-install-recommends \
+RUN apt-get update && apt-get install -y --no-install-recommends \
         cuda-cudart-10-0=10.0.130-1 \
         cuda-compat-10-0=410.48-1 && \
     ln -s cuda-10.0 /usr/local/cuda 
