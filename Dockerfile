@@ -35,7 +35,7 @@ RUN apt-get install -y --no-install-recommends \
         cuda-core-9-0=9.0.176.3-1 \
         cuda-cublas-dev-9-0=9.0.176.4-1 \
         libnccl-dev=$NCCL_VERSION-1+cuda9.0 \
-		libcurl3-dev \
+	libcurl3-dev \
         libfreetype6-dev \
         libhdf5-serial-dev \
         libzmq3-dev \
@@ -50,13 +50,12 @@ RUN apt-get install -y --no-install-recommends \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
-
-# nvidia-docker 1.0
 LABEL com.nvidia.volumes.needed="nvidia_driver"
 LABEL com.nvidia.cuda.version="${CUDA_VERSION}"
 LABEL com.nvidia.cudnn.version="${CUDNN_VERSION}"
 LABEL com.nvidia.nccl.version="${NCCL_VERSION}"
 
+# nvidia-docker 1.0
 RUN echo "/usr/local/nvidia/lib" >> /etc/ld.so.conf.d/nvidia.conf && \
     echo "/usr/local/nvidia/lib64" >> /etc/ld.so.conf.d/nvidia.conf
 
@@ -67,4 +66,4 @@ ENV LIBRARY_PATH /usr/local/cuda/lib64/stubs
 # nvidia-container-runtime
 ENV NVIDIA_VISIBLE_DEVICES all
 ENV NVIDIA_DRIVER_CAPABILITIES compute,utility
-ENV NVIDIA_REQUIRE_CUDA "cuda>=9.0
+ENV NVIDIA_REQUIRE_CUDA "cuda>=9.0"
