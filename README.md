@@ -30,6 +30,8 @@ docker tag 2a9e5a41bb75 nvidia/cuda:10.0-cudnn7-base-horovod
 
 nvidia-docker run --name horovod-base -v /media:/media nvidia/cuda:10.0-cudnn7-base-horovod
 
-docker run --runtime=nvidia -it --name horovod-base -v /media:/media nvidia/cuda:10.0-cudnn7-base-horovod
+docker run --runtime=nvidia -it --name horovod-base -v /media:/media nvidia/cuda:9.0-cudnn7-base-horovod -->> docker ver. 2.0
+
+nvidia-docker run -it --name horovod-base -v /media:/media nvidia/cuda:9.0-cudnn7-base-horovod -->> docker ver.1.1
 
 ```
