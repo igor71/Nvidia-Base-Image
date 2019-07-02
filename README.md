@@ -9,15 +9,15 @@ Ubuntu Server 18.04
 
 CUDA Version   -->> 10.0.130
 
-docker inspect -f '{{index .Config.Labels "com.nvidia.cuda.version"}}' e3f90c878960
+docker inspect -f '{{index .Config.Labels "com.nvidia.cuda.version"}}' efd0a8ea6627
 
 CUDNN Version  -->> 7.6.0.64
 
-docker inspect -f '{{index .Config.Labels "com.nvidia.cudnn.version"}}' e3f90c878960
+docker inspect -f '{{index .Config.Labels "com.nvidia.cudnn.version"}}' efd0a8ea6627
 
 NCCL Version   -->> 2.4.2
 
-docker inspect -f '{{index .Config.Labels "com.nvidia.nccl.version"}}' e3f90c878960
+docker inspect -f '{{index .Config.Labels "com.nvidia.nccl.version"}}' efd0a8ea6627
 
 ```
 
