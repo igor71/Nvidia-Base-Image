@@ -15,8 +15,9 @@ RUN apt-get update && apt-get install -y --no-install-recommends ca-certificates
 ENV CUDA_VERSION 9.0.176
 ENV NCCL_VERSION 2.3.7
 ENV CUDNN_VERSION 7.6.0.64
-
 ENV CUDA_PKG_VERSION 9-0=$CUDA_VERSION-1
+
+
 RUN apt-get update && apt-get install -y --no-install-recommends \
         cuda-cudart-$CUDA_PKG_VERSION && \
     ln -s cuda-9.0 /usr/local/cuda 
