@@ -39,7 +39,7 @@ ENV NVIDIA_REQUIRE_CUDA "cuda>=10.0"
 #     CUDA, CUDNN & Dependences           #
 ###########################################
 
-ENV CUDNN_VERSION 7.5.0.56
+ENV CUDNN_VERSION 7.6.2.24
 ARG CUDA=10.0
 ARG LIB_DIR_PREFIX=x86_64
 ARG ARCH=
