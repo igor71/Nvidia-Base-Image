@@ -7,11 +7,16 @@ MAINTAINER Igor Rabkin <igor.rabkin@xiaoyi.com>
 #           Install Basic Staff           #
 ###########################################
 
-RUN apt-get update && apt-get install -y --no-install-recommends gnupg2 curl git ca-certificates && \
-    curl -fsSL https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/7fa2af80.pub | apt-key add - && \
-    echo "deb https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64 /" > /etc/apt/sources.list.d/cuda.list && \
-    echo "deb https://developer.download.nvidia.com/compute/machine-learning/repos/ubuntu1804/x86_64 /" > /etc/apt/sources.list.d/nvidia-ml.list && \
-    rm -rf /var/lib/apt/lists/*
+RUN apt-get update && apt-get install -y --no-install-recommends ca-certificates apt-transport-https gnupg-curl && \
+    rm -rf /var/lib/apt/lists/* && \
+    NVIDIA_GPGKEY_SUM=d1be581509378368edeec8c1eb2958702feedf3bc3d17011adbf24efacce4ab5 && \
+    NVIDIA_GPGKEY_FPR=ae09fe4bbd223a84b2ccfce3f60f4b3d7fa2af80 && \
+    apt-key adv --fetch-keys https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1604/x86_64/7fa2af80.pub && \
+    apt-key adv --export --no-emit-version -a $NVIDIA_GPGKEY_FPR | tail -n +5 > cudasign.pub && \
+    echo "$NVIDIA_GPGKEY_SUM  cudasign.pub" | sha256sum -c --strict - && rm cudasign.pub && \
+    echo "deb https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1604/x86_64 /" > /etc/apt/sources.list.d/cuda.list && \
+    echo "deb https://developer.download.nvidia.com/compute/machine-learning/repos/ubuntu1604/x86_64 /" > /etc/apt/sources.list.d/nvidia-ml.list
+
 
 ENV CUDA_VERSION 10.0.130
 
@@ -23,7 +28,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     ln -s cuda-10.0 /usr/local/cuda && \
     rm -rf /var/lib/apt/lists/*
 
-# Required for nvidia-docker v1
+
 RUN echo "/usr/local/nvidia/lib" >> /etc/ld.so.conf.d/nvidia.conf && \
     echo "/usr/local/nvidia/lib64" >> /etc/ld.so.conf.d/nvidia.conf
 
@@ -40,29 +45,25 @@ ENV NVIDIA_REQUIRE_CUDA "cuda>=10.0"
 ###########################################
 
 ENV CUDNN_VERSION 7.6.2.24
-ARG CUDA=10.0
-ARG LIB_DIR_PREFIX=x86_64
-ARG ARCH=
 
-SHELL ["/bin/bash", "-c"]
 RUN apt-get update && apt-get install -y --no-install-recommends \
-    cuda-command-line-tools-${CUDA/./-} \
-    cuda-cublas-dev-${CUDA/./-} \
-    cuda-cudart-dev-${CUDA/./-} \
-    cuda-cufft-dev-${CUDA/./-} \
-    cuda-curand-dev-${CUDA/./-} \
-    cuda-cusolver-dev-${CUDA/./-} \
-    cuda-cusparse-dev-${CUDA/./-} \
-    libcudnn7=$CUDNN_VERSION-1+cuda${CUDA} \
-    libcudnn7-dev=$CUDNN_VERSION-1+cuda${CUDA} \
+    cuda-command-line-tools-10-0 \
+    cuda-cublas-dev-10-0 \
+    cuda-cudart-dev-10-0 \
+    cuda-cufft-dev-10-0 \
+    cuda-curand-dev-10-0 \
+    cuda-cusolver-dev-10-0 \
+    cuda-cusparse-dev-10-0 \
+    libcudnn7=$CUDNN_VERSION-1+cuda10.0 \
+    libcudnn7-dev=$CUDNN_VERSION-1+cuda10.0 \
     libcurl3-dev \
     libfreetype6-dev \
     libhdf5-serial-dev \
     libzmq3-dev \
     zlib1g-dev \
     pkg-config && \
-    find /usr/local/cuda-${CUDA}/lib64/ -type f -name 'lib*_static.a' -not -name 'libcudart_static.a' -delete && \
-    rm /usr/lib/${LIB_DIR_PREFIX}-linux-gnu/libcudnn_static_v7.a 
+    find /usr/local/cuda-10.0/lib64/ -type f -name 'lib*_static.a' -not -name 'libcudart_static.a' -delete && \
+    rm /usr/lib/x86_64-linux-gnu/libcudnn_static_v7.a  
     
 LABEL com.nvidia.cuda.version="${CUDA_VERSION}"
 LABEL com.nvidia.cudnn.version="${CUDNN_VERSION}"
