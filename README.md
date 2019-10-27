@@ -1,5 +1,5 @@
 # Nvidia-Base-Image
-Basic Nvidia Image for building tensorflow enabled docker image
+Basic Nvidia Image for building tensorflow/pytorch/cafee enabled docker image without installed NCCL libraries.
 
 This image used as base image for creating images based on tensorflow version 2.0 and above
 
