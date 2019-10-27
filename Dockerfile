@@ -2,7 +2,6 @@ FROM ubuntu:16.04
 
 MAINTAINER Igor Rabkin <igor.rabkin@xiaoyi.com>
 
-
 ###########################################
 #           Install Basic Staff           #
 ###########################################
