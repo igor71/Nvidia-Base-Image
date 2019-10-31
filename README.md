@@ -1,12 +1,12 @@
 # Nvidia-Base-Image
 Basic Nvidia Image for building tensorflow enabled docker image
 
-This image used as base image for creating images based on tensorflow version 2.0 and above
+This image used as base image for creating images based on ubuntu 18 and Cuda 9.0
 
 ```
 Ubuntu Server 18.04
 
-CUDA Version   -->> 10.0.130
+CUDA Version   -->> 9.0.176
 
 CUDNN Version  -->> 7.6.2.24
 
