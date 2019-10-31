@@ -68,9 +68,9 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 	
 ENV LIBRARY_PATH /usr/local/cuda/lib64/stubs
 
+ENV CUDNN_VERSION 7.6.4.38
 RUN apt-get update && apt-get install -y --no-install-recommends \
     ##### CuDNN ######################
-ENV CUDNN_VERSION 7.6.4.38
     libcudnn7=$CUDNN_VERSION-1+cuda9.0 \
     libcudnn7-dev=$CUDNN_VERSION-1+cuda9.0 && \
     apt-get clean && \
