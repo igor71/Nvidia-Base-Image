@@ -66,7 +66,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 	cuda-cublas-dev-9-0=9.0.176.4-1 && \
     rm -rf /var/lib/apt/lists/*
 	
-LIBRARY_PATH /usr/local/cuda/lib64/stubs
+ENV LIBRARY_PATH /usr/local/cuda/lib64/stubs
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
     ##### CuDNN ######################
